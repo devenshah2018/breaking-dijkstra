@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Breaking Dijkstra - Algorithm Visualization",
+  title: "Breaking Dijkstra's Algorithm Visualization",
   description: "Interactive visualization comparing Dijkstra's algorithm and Breaking Dijkstra algorithm",
 };
 
