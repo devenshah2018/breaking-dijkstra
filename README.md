@@ -17,6 +17,23 @@ Dijkstra's algorithm is a fundamental graph algorithm for finding shortest paths
 4. **Relaxation**: For each neighbor of the selected vertex, update distances if a shorter path is found
 5. **Completion**: Mark vertices as visited once their shortest distance is finalized
 
+### Pseudocode
+
+```
+DIJKSTRA(G, w, s)
+─────────────────────────────
+1: INITIALIZE – SINGLE – SOURCE(G,s)
+2: S = Ø
+3: Q = G.V                    //Insert all vertices into queue
+4: while Q ≠ Ø do
+5:     u = EXTRACT – MIN(Q)
+6:     S = S ∪ {u}            //add u to S
+7:     for each vertex v ∈ G.Adj[u] do
+8:         RELAX (u, v, w)
+9:     end for
+10: end while
+```
+
 ## Breaking Dijkstra Algorithm
 
 The Breaking Dijkstra algorithm is a breakthrough algorithm that achieves better time complexity than Dijkstra's on sparse graphs by avoiding the sorting bottleneck.
@@ -32,6 +49,33 @@ The algorithm operates in iterations, each consisting of two phases:
    - Reduces the size of the frontier (set of vertices to explore from)
    - Selects "pivot" vertices with large reachable trees
    - This avoids the sorting bottleneck that limits Dijkstra's performance
+
+### Pseudocode
+
+```
+BREAKING-DIJKSTRA(G, w, s)
+────────────────────────────────────
+1: INITIALIZE – SINGLE – SOURCE(G,s)
+2: S = {s}                        //Complete set, initially contains source
+3: F = {s}                        //Frontier set, vertices to explore from
+4: k = ⌊log^{1/3} n⌋              //Number of Bellman-Ford rounds
+5: while F ≠ Ø do
+6:     for round = 1 to k do      //Bellman-Ford relaxation phase
+7:         for each vertex u ∈ G.V do
+8:             if d[u] ≠ ∞ then
+9:                 for each vertex v ∈ G.Adj[u] do
+10:                    if d[v] > d[u] + w(u,v) then
+11:                        d[v] = d[u] + w(u,v)
+12:                        π[v] = u
+13:                    end if
+14:                end for
+15:            end if
+16:        end for
+17:    end for
+18:    S = S ∪ {v : d[v] finalized}  //Mark vertices as complete
+19:    F = REDUCE-FRONTIER(G, F, S, k)  //Reduce frontier using pivots
+20: end while
+```
 
 ### Why It's Faster
 
