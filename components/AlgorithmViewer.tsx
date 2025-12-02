@@ -28,6 +28,7 @@ export default function AlgorithmViewer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [playSpeed, setPlaySpeed] = useState(1000);
   const [result, setResult] = useState<AlgorithmResult | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const executionLogRef = useRef<HTMLDivElement>(null);
 
   const runAlgorithm = () => {
@@ -289,7 +290,18 @@ export default function AlgorithmViewer({
           <div className="mb-2">
             <div className="flex items-center justify-between mb-1">
               <h4 className="text-sm font-bold text-gray-900">Algorithm Execution Log</h4>
-              <p className="text-xs text-gray-500">Step {currentStepIndex + 1} of {steps.length}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-xs text-gray-500">Step {currentStepIndex + 1} of {steps.length}</p>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="p-1.5 hover:bg-gray-100 rounded cursor-pointer transition-colors text-gray-600 hover:text-gray-900"
+                  title="Expand execution log"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                  </svg>
+                </button>
+              </div>
             </div>
             {algorithmName.includes('Breaking') && (
               <p className="text-xs text-gray-600 mb-2 bg-blue-50 p-1.5 rounded border-l-2 border-blue-400">
@@ -361,6 +373,102 @@ export default function AlgorithmViewer({
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isModalOpen && result && steps.length > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50" onClick={() => setIsModalOpen(false)}>
+          <div className="bg-white rounded-lg shadow-xl w-[90vw] h-[90vh] max-w-5xl flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <h3 className="text-lg font-bold text-gray-900">Algorithm Execution Log - {algorithmName}</h3>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded cursor-pointer transition-colors text-gray-600 hover:text-gray-900"
+                title="Close modal"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="mb-4">
+                {algorithmName.includes('Breaking') && (
+                  <p className="text-sm text-gray-600 mb-3 bg-blue-50 p-2 rounded border-l-2 border-blue-400">
+                    <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra's), 
+                    this algorithm runs multiple Bellman-Ford relaxation rounds, then reduces the frontier size to avoid sorting bottlenecks. 
+                    This makes it faster for large graphs!
+                  </p>
+                )}
+                {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && (
+                  <p className="text-sm text-gray-600 mb-3 bg-green-50 p-2 rounded border-l-2 border-green-400">
+                    <strong>How Dijkstra's Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
+                    then update distances to its neighbors. This guarantees we find the shortest path by always processing vertices in order of increasing distance.
+                  </p>
+                )}
+              </div>
+              
+              <div className="border border-gray-200 rounded bg-white">
+                <div className="sticky top-0 bg-gray-50 border-b border-gray-200 z-10">
+                  <div className="flex items-start gap-4 p-3">
+                    <div className="shrink-0 w-20 text-center">
+                      <div className="text-sm font-semibold text-gray-700">Iteration</div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-gray-700">Description</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="divide-y divide-gray-100">
+                  {steps.map((step, idx) => (
+                    <div
+                      key={idx}
+                      className={idx === currentStepIndex 
+                        ? 'bg-blue-50 border-l-4 border-blue-500 p-3' 
+                        : 'bg-white hover:bg-gray-50 p-3 transition-colors'}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="shrink-0 w-20 text-center">
+                          <div className={`text-sm font-bold ${idx === currentStepIndex ? 'text-blue-700' : 'text-gray-500'}`}>
+                            {step.iteration % 1 === 0 || step.iteration % 1 > 0.9
+                              ? Math.floor(step.iteration)
+                              : `${Math.floor(step.iteration)}.${Math.round((step.iteration % 1) * 10)}`}
+                          </div>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className={`text-sm font-semibold mb-2 ${idx === currentStepIndex ? 'text-blue-900' : 'text-gray-900'}`}>
+                            {step.decision || step.description}
+                          </div>
+                          {step.actions && step.actions.length > 0 && (
+                            <div className="text-sm text-gray-700 space-y-1 ml-2">
+                              {step.actions.map((action, aidx) => {
+                                const isPhaseHeader = action.startsWith('Phase 1') || action.startsWith('Phase 2');
+                                const isSubAction = action.startsWith('   •') || action.startsWith('  •');
+                                return (
+                                  <div 
+                                    key={aidx} 
+                                    className={isPhaseHeader 
+                                      ? 'font-semibold text-gray-900 mt-2' 
+                                      : isSubAction 
+                                        ? 'text-gray-600 ml-3' 
+                                        : 'text-gray-700'}
+                                  >
+                                    {action}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
