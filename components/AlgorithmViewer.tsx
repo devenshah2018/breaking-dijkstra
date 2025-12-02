@@ -248,31 +248,16 @@ export default function AlgorithmViewer({
       </div>
 
       <div className="flex justify-center bg-white p-1 min-h-[500px] items-center overflow-visible">
-        {result ? (
-          <div className="w-full flex justify-center overflow-visible">
-            <GraphVisualization
-              graph={graph}
-              step={currentStep}
-              source={source}
-              highlightPath={highlightPath}
-              width={width}
-              height={height}
-            />
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center text-center p-4 sm:p-8 w-full">
-            <div className="w-full flex justify-center overflow-visible">
-              <GraphVisualization
-                graph={graph}
-                step={currentStep}
-                source={source}
-                highlightPath={[]}
-                width={width}
-                height={height}
-              />
-            </div>
-          </div>
-        )}
+        <div className="w-full flex justify-center overflow-visible">
+          <GraphVisualization
+            graph={graph}
+            step={currentStep}
+            source={source}
+            highlightPath={result ? highlightPath : []}
+            width={width}
+            height={height}
+          />
+        </div>
       </div>
 
       {result && highlightPath.length > 0 && (
