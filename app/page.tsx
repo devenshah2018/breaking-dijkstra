@@ -32,7 +32,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex-shrink-0">
               <h1 className="text-lg font-bold text-gray-900">
-                Breaking Dijkstras Algorithm
+                "Tsinghua's" Algorithm
               </h1>
               <p className="text-xs text-gray-600 mt-0.5">
                 <span className="font-mono">O(m + n log n)</span> → <span className="font-mono">O(m log<sup>2/3</sup> n)</span>
@@ -131,7 +131,7 @@ export default function Home() {
               algorithmFunc={breakingDijkstra}
               source={source}
               target={target}
-              algorithmName="Breaking Dijkstra Algorithm"
+              algorithmName="Tsinghua's Algorithm"
             />
           </div>
         </div>
