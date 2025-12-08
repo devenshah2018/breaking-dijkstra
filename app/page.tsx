@@ -32,7 +32,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex-shrink-0">
               <h1 className="text-lg font-bold text-gray-900">
-                "Tsinghua's" Algorithm
+                &quot;Tsinghua&apos;s&quot; Algorithm
               </h1>
               <p className="text-xs text-gray-600 mt-0.5">
                 <span className="font-mono">O(m + n log n)</span> → <span className="font-mono">O(m log<sup>2/3</sup> n)</span>

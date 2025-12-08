@@ -81,7 +81,7 @@ export default function AlgorithmViewer({
       return [];
     }
     
-    let path = reconstructPath(parentsToUse, target);
+    const path = reconstructPath(parentsToUse, target);
     
     if (path.length > 0) {
       if (path[0] === source) {
@@ -290,14 +290,14 @@ export default function AlgorithmViewer({
             </div>
             {algorithmName.includes('Breaking') && (
               <p className="text-xs text-gray-600 mb-2 bg-blue-50 p-1.5 rounded border-l-2 border-blue-400">
-                <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra's), 
+                <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra&apos;s), 
                 this algorithm runs multiple Bellman-Ford relaxation rounds, then reduces the frontier size to avoid sorting bottlenecks. 
                 This makes it faster for large graphs!
               </p>
             )}
             {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && (
               <p className="text-xs text-gray-600 mb-2 bg-green-50 p-1.5 rounded border-l-2 border-green-400">
-                <strong>How Dijkstra's Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
+                <strong>How Dijkstra&apos;s Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
                 then update distances to its neighbors. This guarantees we find the shortest path by always processing vertices in order of increasing distance.
               </p>
             )}
@@ -383,14 +383,14 @@ export default function AlgorithmViewer({
               <div className="mb-4">
                 {algorithmName.includes('Breaking') && (
                   <p className="text-sm text-gray-600 mb-3 bg-blue-50 p-2 rounded border-l-2 border-blue-400">
-                    <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra's), 
+                    <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra&apos;s), 
                     this algorithm runs multiple Bellman-Ford relaxation rounds, then reduces the frontier size to avoid sorting bottlenecks. 
                     This makes it faster for large graphs!
                   </p>
                 )}
                 {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && (
                   <p className="text-sm text-gray-600 mb-3 bg-green-50 p-2 rounded border-l-2 border-green-400">
-                    <strong>How Dijkstra's Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
+                    <strong>How Dijkstra&apos;s Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
                     then update distances to its neighbors. This guarantees we find the shortest path by always processing vertices in order of increasing distance.
                   </p>
                 )}

@@ -246,7 +246,7 @@ export function breakingDijkstra(graph: Graph, source: number): AlgorithmResult 
 
     newComplete.forEach(v => complete.add(v));
     
-    frontier = reduceFrontier(graph, distances, frontier, complete, k, n);
+    frontier = reduceFrontier(graph, distances, frontier, complete, k);
     const pivots = frontier.size < oldFrontierSize ? new Set(frontier) : new Set<number>();
 
     const actions: string[] = [];
@@ -370,8 +370,7 @@ function reduceFrontier(
   distances: Map<number, number>,
   frontier: Set<number>,
   complete: Set<number>,
-  k: number,
-  n: number
+  k: number
 ): Set<number> {
   if (frontier.size <= 1) {
     return new Set(frontier);
