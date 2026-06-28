@@ -61,10 +61,10 @@ export default function GraphVisualization({
   const getNodeColor = (v: number): string => {
     if (v === source) return '#10b981';
     if (step.currentVertex === v) return '#fbbf24';
+    if (step.pivots?.has(v)) return '#a855f7';
+    if (step.frontier?.has(v)) return '#fde047';
     if (step.visited?.has(v)) return '#86efac';
     if (step.queue?.includes(v)) return '#93c5fd';
-    if (step.frontier?.has(v)) return '#fde047';
-    if (step.pivots?.has(v)) return '#a855f7';
     if (step.complete?.has(v)) return '#86efac';
     if (highlightPath.includes(v)) return '#fb923c';
     if (distances.get(v)! < Infinity) return '#fef3c7';

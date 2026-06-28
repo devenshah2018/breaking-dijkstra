@@ -32,7 +32,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex-shrink-0">
               <h1 className="text-lg font-bold text-gray-900">
-                &quot;Tsinghua&apos;s&quot; Algorithm
+                Breaking Dijkstra's Algorithm
               </h1>
               <p className="text-xs text-gray-600 mt-0.5">
                 <span className="font-mono">O(m + n log n)</span> → <span className="font-mono">O(m log<sup>2/3</sup> n)</span>
@@ -109,11 +109,13 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
               <span className="font-semibold text-gray-700">Legend:</span>
               <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-green-500 border border-green-600"></div><span className="text-gray-700">Source</span></div>
-              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-yellow-400 border border-yellow-600"></div><span className="text-gray-700">Current</span></div>
-              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-green-200 border border-green-400"></div><span className="text-gray-700">Visited</span></div>
-              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-blue-300 border border-blue-400"></div><span className="text-gray-700">Queue</span></div>
-              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-purple-500 border border-purple-600"></div><span className="text-gray-700">Pivot</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-600"></div><span className="text-gray-700">Settling</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-purple-500 border border-purple-600"></div><span className="text-gray-700">Pivot / block</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-yellow-300 border border-yellow-500"></div><span className="text-gray-700">Frontier</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-green-200 border border-green-400"></div><span className="text-gray-700">Complete / visited</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-blue-300 border border-blue-400"></div><span className="text-gray-700">Queue (Dijkstra)</span></div>
               <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-orange-400 border border-orange-600"></div><span className="text-gray-700">Path</span></div>
+              <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-amber-100 border border-amber-300"></div><span className="text-gray-700">Discovered</span></div>
               <div className="flex items-center gap-1"><div className="w-2.5 h-2.5 rounded-full bg-gray-300 border border-gray-400"></div><span className="text-gray-700">Undiscovered</span></div>
             </div>
           </div>

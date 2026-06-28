@@ -288,14 +288,15 @@ export default function AlgorithmViewer({
                 </button>
               </div>
             </div>
-            {algorithmName.includes('Breaking') && (
+            {(algorithmName.includes('Breaking') || algorithmName.includes('Tsinghua')) && (
               <p className="text-xs text-gray-600 mb-2 bg-blue-50 p-1.5 rounded border-l-2 border-blue-400">
-                <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra&apos;s), 
-                this algorithm runs multiple Bellman-Ford relaxation rounds, then reduces the frontier size to avoid sorting bottlenecks. 
-                This makes it faster for large graphs!
+                <strong>How the Tsinghua algorithm works:</strong> It avoids fully sorting the frontier. Each recursion level
+                runs k bounded relaxation rounds (FindPivots) to shrink the frontier down to a few &quot;pivots&quot;, then recursively
+                settles vertices in distance-ordered <em>blocks</em> — partial sorting instead of a full priority-queue sort.
+                That is what breaks Dijkstra&apos;s O(m + n log n) sorting barrier, reaching O(m log<sup>2/3</sup> n).
               </p>
             )}
-            {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && (
+            {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && !algorithmName.includes('Tsinghua') && (
               <p className="text-xs text-gray-600 mb-2 bg-green-50 p-1.5 rounded border-l-2 border-green-400">
                 <strong>How Dijkstra&apos;s Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
                 then update distances to its neighbors. This guarantees we find the shortest path by always processing vertices in order of increasing distance.
@@ -381,14 +382,15 @@ export default function AlgorithmViewer({
             
             <div className="flex-1 overflow-y-auto p-4">
               <div className="mb-4">
-                {algorithmName.includes('Breaking') && (
+                {(algorithmName.includes('Breaking') || algorithmName.includes('Tsinghua')) && (
                   <p className="text-sm text-gray-600 mb-3 bg-blue-50 p-2 rounded border-l-2 border-blue-400">
-                    <strong>How Breaking Dijkstra Works:</strong> Instead of processing one vertex at a time (like Dijkstra&apos;s), 
-                    this algorithm runs multiple Bellman-Ford relaxation rounds, then reduces the frontier size to avoid sorting bottlenecks. 
-                    This makes it faster for large graphs!
+                    <strong>How the Tsinghua algorithm works:</strong> It avoids fully sorting the frontier. Each recursion level
+                    runs k bounded relaxation rounds (FindPivots) to shrink the frontier down to a few &quot;pivots&quot;, then recursively
+                    settles vertices in distance-ordered <em>blocks</em> — partial sorting instead of a full priority-queue sort.
+                    That is what breaks Dijkstra&apos;s O(m + n log n) sorting barrier, reaching O(m log<sup>2/3</sup> n).
                   </p>
                 )}
-                {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && (
+                {algorithmName.includes("Dijkstra's") && !algorithmName.includes('Breaking') && !algorithmName.includes('Tsinghua') && (
                   <p className="text-sm text-gray-600 mb-3 bg-green-50 p-2 rounded border-l-2 border-green-400">
                     <strong>How Dijkstra&apos;s Works:</strong> At each step, we pick the unvisited vertex with the smallest known distance, 
                     then update distances to its neighbors. This guarantees we find the shortest path by always processing vertices in order of increasing distance.
