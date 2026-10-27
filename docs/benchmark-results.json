@@ -1,0 +1,210 @@
+{
+  "environment": {
+    "runtime": "v22.15.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "scope": "Single seeded graph per configuration; timings include kernel allocations and counters, exclude tracing and correctness checks. No asymptotic claim.",
+  "reports": [
+    {
+      "config": {
+        "size": 100,
+        "family": "sparse"
+      },
+      "vertices": 100,
+      "edges": 300,
+      "seed": 2026,
+      "samples": 21,
+      "warmups": 5,
+      "source": 0,
+      "verified": true,
+      "timestamp": "2026-10-27T23:34:53.586Z",
+      "dijkstra": {
+        "median": 0.06400520312500024,
+        "p10": 0.062184906250000616,
+        "p90": 0.06936457812500052,
+        "batchSize": 64,
+        "stats": {
+          "edgeScans": 300,
+          "relaxations": 114,
+          "queueInsertions": 115,
+          "pulls": 0,
+          "recursiveCalls": 0
+        }
+      },
+      "bmssp": {
+        "median": 0.3330104375000005,
+        "p10": 0.32514325,
+        "p90": 0.3613255624999976,
+        "batchSize": 16,
+        "stats": {
+          "edgeScans": 1575,
+          "relaxations": 113,
+          "queueInsertions": 402,
+          "pulls": 115,
+          "recursiveCalls": 116
+        }
+      }
+    },
+    {
+      "config": {
+        "size": 500,
+        "family": "sparse"
+      },
+      "vertices": 500,
+      "edges": 1500,
+      "seed": 2026,
+      "samples": 21,
+      "warmups": 5,
+      "source": 0,
+      "verified": true,
+      "timestamp": "2026-10-27T23:34:53.970Z",
+      "dijkstra": {
+        "median": 0.5654818124999963,
+        "p10": 0.5499609374999963,
+        "p90": 0.6018384999999995,
+        "batchSize": 16,
+        "stats": {
+          "edgeScans": 1500,
+          "relaxations": 596,
+          "queueInsertions": 597,
+          "pulls": 0,
+          "recursiveCalls": 0
+        }
+      },
+      "bmssp": {
+        "median": 1.6676769999999976,
+        "p10": 1.621781249999998,
+        "p90": 1.7331772499999971,
+        "batchSize": 4,
+        "stats": {
+          "edgeScans": 4728,
+          "relaxations": 596,
+          "queueInsertions": 711,
+          "pulls": 74,
+          "recursiveCalls": 75
+        }
+      }
+    },
+    {
+      "config": {
+        "size": 1000,
+        "family": "sparse"
+      },
+      "vertices": 1000,
+      "edges": 3000,
+      "seed": 2026,
+      "samples": 21,
+      "warmups": 5,
+      "source": 0,
+      "verified": true,
+      "timestamp": "2026-10-27T23:34:54.361Z",
+      "dijkstra": {
+        "median": 1.480374999999981,
+        "p10": 1.3835937499999886,
+        "p90": 1.579322750000017,
+        "batchSize": 4,
+        "stats": {
+          "edgeScans": 3000,
+          "relaxations": 1186,
+          "queueInsertions": 1187,
+          "pulls": 0,
+          "recursiveCalls": 0
+        }
+      },
+      "bmssp": {
+        "median": 4.508937500000002,
+        "p10": 4.3438540000000785,
+        "p90": 5.05752050000001,
+        "batchSize": 2,
+        "stats": {
+          "edgeScans": 9412,
+          "relaxations": 1189,
+          "queueInsertions": 1711,
+          "pulls": 117,
+          "recursiveCalls": 118
+        }
+      }
+    },
+    {
+      "config": {
+        "size": 1000,
+        "family": "grid"
+      },
+      "vertices": 961,
+      "edges": 1860,
+      "seed": null,
+      "samples": 21,
+      "warmups": 5,
+      "source": 0,
+      "verified": true,
+      "timestamp": "2026-10-27T23:34:54.722Z",
+      "dijkstra": {
+        "median": 0.9603749999999991,
+        "p10": 0.9327031250000175,
+        "p90": 1.000234374999991,
+        "batchSize": 8,
+        "stats": {
+          "edgeScans": 1860,
+          "relaxations": 960,
+          "queueInsertions": 961,
+          "pulls": 0,
+          "recursiveCalls": 0
+        }
+      },
+      "bmssp": {
+        "median": 1.784729249999998,
+        "p10": 1.728979250000009,
+        "p90": 1.8657605000000217,
+        "batchSize": 4,
+        "stats": {
+          "edgeScans": 6429,
+          "relaxations": 960,
+          "queueInsertions": 1454,
+          "pulls": 310,
+          "recursiveCalls": 311
+        }
+      }
+    },
+    {
+      "config": {
+        "size": 500,
+        "family": "dense"
+      },
+      "vertices": 500,
+      "edges": 29940,
+      "seed": 456,
+      "samples": 21,
+      "warmups": 5,
+      "source": 0,
+      "verified": true,
+      "timestamp": "2026-10-27T23:34:55.235Z",
+      "dijkstra": {
+        "median": 2.567103999999972,
+        "p10": 2.4863960000000134,
+        "p90": 2.6282705000000988,
+        "batchSize": 2,
+        "stats": {
+          "edgeScans": 29940,
+          "relaxations": 1432,
+          "queueInsertions": 1433,
+          "pulls": 0,
+          "recursiveCalls": 0
+        }
+      },
+      "bmssp": {
+        "median": 13.248375000000124,
+        "p10": 13.024958000000197,
+        "p90": 13.453665999999885,
+        "batchSize": 1,
+        "stats": {
+          "edgeScans": 91915,
+          "relaxations": 1432,
+          "queueInsertions": 2008,
+          "pulls": 63,
+          "recursiveCalls": 64
+        }
+      }
+    }
+  ]
+}

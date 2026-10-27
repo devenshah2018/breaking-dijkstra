@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Breaking Dijkstra's Algorithm Visualization",
-  description: "Interactive visualization comparing Dijkstra's algorithm and Breaking Dijkstra algorithm",
+  icons: { icon: "/icon.svg" },
+  title: "Breaking Dijkstra — The Shortest Path Lab",
+  description:
+    "Explore Dijkstra and the Duan et al. BMSSP procedure with verified shortest paths, shared playback, and reproducible browser benchmarks.",
 };
 
 export default function RootLayout({
